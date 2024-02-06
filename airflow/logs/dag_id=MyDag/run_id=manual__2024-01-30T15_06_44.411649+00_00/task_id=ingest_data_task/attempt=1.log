@@ -1,0 +1,14 @@
+[2024-01-30T16:08:59.490+0100] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: MyDag.ingest_data_task manual__2024-01-30T15:06:44.411649+00:00 [queued]>
+[2024-01-30T16:08:59.526+0100] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: MyDag.ingest_data_task manual__2024-01-30T15:06:44.411649+00:00 [queued]>
+[2024-01-30T16:08:59.526+0100] {taskinstance.py:2171} INFO - Starting attempt 1 of 2
+[2024-01-30T16:08:59.605+0100] {taskinstance.py:2192} INFO - Executing <Task(PythonOperator): ingest_data_task> on 2024-01-30 15:06:44.411649+00:00
+[2024-01-30T16:08:59.715+0100] {standard_task_runner.py:60} INFO - Started process 10640 to run task
+[2024-01-30T16:08:59.777+0100] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'MyDag', 'ingest_data_task', 'manual__2024-01-30T15:06:44.411649+00:00', '--job-id', '19', '--raw', '--subdir', 'DAGS_FOLDER/FilmDag.py', '--cfg-path', '/tmp/tmp4amqc0fk']
+[2024-01-30T16:08:59.781+0100] {standard_task_runner.py:88} INFO - Job 19: Subtask ingest_data_task
+[2024-01-30T16:09:00.053+0100] {task_command.py:423} INFO - Running <TaskInstance: MyDag.ingest_data_task manual__2024-01-30T15:06:44.411649+00:00 [running]> on host ubuntu.ubuntu.virtualbox.org
+[2024-01-30T16:09:00.504+0100] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='MyDag' AIRFLOW_CTX_TASK_ID='ingest_data_task' AIRFLOW_CTX_EXECUTION_DATE='2024-01-30T15:06:44.411649+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-01-30T15:06:44.411649+00:00'
+[2024-01-30T16:11:36.439+0100] {local_task_job_runner.py:302} WARNING - State of this instance has been externally set to failed. Terminating instance.
+[2024-01-30T16:11:36.495+0100] {process_utils.py:131} INFO - Sending Signals.SIGTERM to group 10640. PIDs of all processes in the group: [10640]
+[2024-01-30T16:11:36.496+0100] {process_utils.py:86} INFO - Sending the signal Signals.SIGTERM to group 10640
+[2024-01-30T16:11:36.658+0100] {taskinstance.py:2451} ERROR - Received SIGTERM. Terminating subprocesses.
+[2024-01-30T16:11:36.884+0100] {process_utils.py:79} INFO - Process psutil.Process(pid=10640, status='terminated', exitcode=0, started='16:08:59') (10640) terminated with exit code 0

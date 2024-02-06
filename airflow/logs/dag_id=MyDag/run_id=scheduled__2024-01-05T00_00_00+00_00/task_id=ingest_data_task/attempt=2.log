@@ -1,0 +1,54 @@
+[2024-02-06T18:45:09.004+0100] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: MyDag.ingest_data_task scheduled__2024-01-05T00:00:00+00:00 [queued]>
+[2024-02-06T18:45:09.027+0100] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: MyDag.ingest_data_task scheduled__2024-01-05T00:00:00+00:00 [queued]>
+[2024-02-06T18:45:09.028+0100] {taskinstance.py:2171} INFO - Starting attempt 2 of 2
+[2024-02-06T18:45:09.299+0100] {taskinstance.py:2192} INFO - Executing <Task(PythonOperator): ingest_data_task> on 2024-01-05 00:00:00+00:00
+[2024-02-06T18:45:09.338+0100] {standard_task_runner.py:60} INFO - Started process 4994 to run task
+[2024-02-06T18:45:09.349+0100] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'MyDag', 'ingest_data_task', 'scheduled__2024-01-05T00:00:00+00:00', '--job-id', '58', '--raw', '--subdir', 'DAGS_FOLDER/FilmDag.py', '--cfg-path', '/tmp/tmp3c2lh82c']
+[2024-02-06T18:45:09.355+0100] {standard_task_runner.py:88} INFO - Job 58: Subtask ingest_data_task
+[2024-02-06T18:45:09.641+0100] {task_command.py:423} INFO - Running <TaskInstance: MyDag.ingest_data_task scheduled__2024-01-05T00:00:00+00:00 [running]> on host ubuntu.ubuntu.virtualbox.org
+[2024-02-06T18:45:09.983+0100] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='MyDag' AIRFLOW_CTX_TASK_ID='ingest_data_task' AIRFLOW_CTX_EXECUTION_DATE='2024-01-05T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-05T00:00:00+00:00'
+[2024-02-06T18:49:13.042+0100] {process_utils.py:131} INFO - Sending Signals.SIGTERM to group 4994. PIDs of all processes in the group: [4994]
+[2024-02-06T18:49:13.317+0100] {process_utils.py:86} INFO - Sending the signal Signals.SIGTERM to group 4994
+[2024-02-06T18:49:13.319+0100] {taskinstance.py:2451} ERROR - Received SIGTERM. Terminating subprocesses.
+[2024-02-06T18:49:13.337+0100] {taskinstance.py:2699} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/home/ubuntu/airflow/dags/program.py", line 76, in ingest_data
+    movies_data()
+  File "/home/ubuntu/airflow/dags/program.py", line 52, in movies_data
+    all_popular_movies_data = get_all_pages(popular_movies_url)
+  File "/home/ubuntu/airflow/dags/program.py", line 27, in get_all_pages
+    response = requests.get(api_url, params=params)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 715, in urlopen
+    httplib_response = self._make_request(
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 404, in _make_request
+    self._validate_conn(conn)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 1058, in _validate_conn
+    conn.connect()
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/urllib3/connection.py", line 363, in connect
+    self.sock = conn = self._new_conn()
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    sock.connect(sa)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 2453, in signal_handler
+    raise AirflowException("Task received SIGTERM signal")
+airflow.exceptions.AirflowException: Task received SIGTERM signal
+[2024-02-06T18:49:14.250+0100] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=MyDag, task_id=ingest_data_task, execution_date=20240105T000000, start_date=20240206T174509, end_date=20240206T174914
+[2024-02-06T18:49:14.453+0100] {standard_task_runner.py:107} ERROR - Failed to execute job 58 for task ingest_data_task (Task received SIGTERM signal; 4994)
+[2024-02-06T18:49:14.508+0100] {process_utils.py:79} INFO - Process psutil.Process(pid=4994, status='terminated', exitcode=1, started='18:45:08') (4994) terminated with exit code 1

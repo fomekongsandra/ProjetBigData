@@ -1,0 +1,78 @@
+[2024-02-02T16:38:48.826+0100] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: MyDag.spark_job scheduled__2024-01-04T00:00:00+00:00 [queued]>
+[2024-02-02T16:38:48.840+0100] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: MyDag.spark_job scheduled__2024-01-04T00:00:00+00:00 [queued]>
+[2024-02-02T16:38:48.841+0100] {taskinstance.py:2171} INFO - Starting attempt 1 of 2
+[2024-02-02T16:38:48.877+0100] {taskinstance.py:2192} INFO - Executing <Task(SparkSubmitOperator): spark_job> on 2024-01-04 00:00:00+00:00
+[2024-02-02T16:38:48.889+0100] {standard_task_runner.py:60} INFO - Started process 12181 to run task
+[2024-02-02T16:38:48.897+0100] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'MyDag', 'spark_job', 'scheduled__2024-01-04T00:00:00+00:00', '--job-id', '45', '--raw', '--subdir', 'DAGS_FOLDER/FilmDag.py', '--cfg-path', '/tmp/tmpebgqaypv']
+[2024-02-02T16:38:48.904+0100] {standard_task_runner.py:88} INFO - Job 45: Subtask spark_job
+[2024-02-02T16:38:48.998+0100] {task_command.py:423} INFO - Running <TaskInstance: MyDag.spark_job scheduled__2024-01-04T00:00:00+00:00 [running]> on host ubuntu.ubuntu.virtualbox.org
+[2024-02-02T16:38:49.093+0100] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='MyDag' AIRFLOW_CTX_TASK_ID='spark_job' AIRFLOW_CTX_EXECUTION_DATE='2024-01-04T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-04T00:00:00+00:00'
+[2024-02-02T16:38:49.108+0100] {base.py:83} INFO - Using connection ID 'spark_default' for task execution.
+[2024-02-02T16:38:49.112+0100] {spark_submit.py:401} INFO - Spark-Submit cmd: spark-submit --master local[*] --num-executors 2 --total-executor-cores 2 --executor-cores 1 --executor-memory 2g --name arrow-spark --class main.scala.chapter2.MovieAnalysis --verbose --queue root.default /home/ubuntu/Downloads/mnmcount/scala/target/scala-2.12/main-scala-mnmc_2.12-1.0.jar
+[2024-02-02T16:38:53.267+0100] {spark_submit.py:571} INFO - Using properties file: null
+[2024-02-02T16:38:53.555+0100] {spark_submit.py:571} INFO - 24/02/02 16:38:53 WARN Utils: Your hostname, ubuntu resolves to a loopback address: 127.0.1.1; using 10.0.2.15 instead (on interface enp0s3)
+[2024-02-02T16:38:53.564+0100] {spark_submit.py:571} INFO - 24/02/02 16:38:53 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+[2024-02-02T16:38:53.704+0100] {spark_submit.py:571} INFO - Parsed arguments:
+[2024-02-02T16:38:53.704+0100] {spark_submit.py:571} INFO - master                  local[*]
+[2024-02-02T16:38:53.705+0100] {spark_submit.py:571} INFO - deployMode              null
+[2024-02-02T16:38:53.705+0100] {spark_submit.py:571} INFO - executorMemory          2g
+[2024-02-02T16:38:53.705+0100] {spark_submit.py:571} INFO - executorCores           1
+[2024-02-02T16:38:53.705+0100] {spark_submit.py:571} INFO - totalExecutorCores      2
+[2024-02-02T16:38:53.705+0100] {spark_submit.py:571} INFO - propertiesFile          null
+[2024-02-02T16:38:53.705+0100] {spark_submit.py:571} INFO - driverMemory            null
+[2024-02-02T16:38:53.705+0100] {spark_submit.py:571} INFO - driverCores             null
+[2024-02-02T16:38:53.705+0100] {spark_submit.py:571} INFO - driverExtraClassPath    null
+[2024-02-02T16:38:53.706+0100] {spark_submit.py:571} INFO - driverExtraLibraryPath  null
+[2024-02-02T16:38:53.706+0100] {spark_submit.py:571} INFO - driverExtraJavaOptions  null
+[2024-02-02T16:38:53.706+0100] {spark_submit.py:571} INFO - supervise               false
+[2024-02-02T16:38:53.706+0100] {spark_submit.py:571} INFO - queue                   root.default
+[2024-02-02T16:38:53.707+0100] {spark_submit.py:571} INFO - numExecutors            2
+[2024-02-02T16:38:53.707+0100] {spark_submit.py:571} INFO - files                   null
+[2024-02-02T16:38:53.707+0100] {spark_submit.py:571} INFO - pyFiles                 null
+[2024-02-02T16:38:53.707+0100] {spark_submit.py:571} INFO - archives                null
+[2024-02-02T16:38:53.707+0100] {spark_submit.py:571} INFO - mainClass               main.scala.chapter2.MovieAnalysis
+[2024-02-02T16:38:53.707+0100] {spark_submit.py:571} INFO - primaryResource         file:/home/ubuntu/Downloads/mnmcount/scala/target/scala-2.12/main-scala-mnmc_2.12-1.0.jar
+[2024-02-02T16:38:53.707+0100] {spark_submit.py:571} INFO - name                    arrow-spark
+[2024-02-02T16:38:53.707+0100] {spark_submit.py:571} INFO - childArgs               []
+[2024-02-02T16:38:53.707+0100] {spark_submit.py:571} INFO - jars                    null
+[2024-02-02T16:38:53.708+0100] {spark_submit.py:571} INFO - packages                null
+[2024-02-02T16:38:53.708+0100] {spark_submit.py:571} INFO - packagesExclusions      null
+[2024-02-02T16:38:53.708+0100] {spark_submit.py:571} INFO - repositories            null
+[2024-02-02T16:38:53.708+0100] {spark_submit.py:571} INFO - verbose                 true
+[2024-02-02T16:38:53.708+0100] {spark_submit.py:571} INFO - 
+[2024-02-02T16:38:53.708+0100] {spark_submit.py:571} INFO - Spark properties used, including those specified through
+[2024-02-02T16:38:53.708+0100] {spark_submit.py:571} INFO - --conf and those from the properties file null:
+[2024-02-02T16:38:53.708+0100] {spark_submit.py:571} INFO - 
+[2024-02-02T16:38:53.708+0100] {spark_submit.py:571} INFO - 
+[2024-02-02T16:38:53.709+0100] {spark_submit.py:571} INFO - 
+[2024-02-02T16:38:54.604+0100] {spark_submit.py:571} INFO - Main class:
+[2024-02-02T16:38:54.605+0100] {spark_submit.py:571} INFO - main.scala.chapter2.MovieAnalysis
+[2024-02-02T16:38:54.606+0100] {spark_submit.py:571} INFO - Arguments:
+[2024-02-02T16:38:54.607+0100] {spark_submit.py:571} INFO - 
+[2024-02-02T16:38:54.620+0100] {spark_submit.py:571} INFO - Spark config:
+[2024-02-02T16:38:54.621+0100] {spark_submit.py:571} INFO - (spark.app.name,arrow-spark)
+[2024-02-02T16:38:54.621+0100] {spark_submit.py:571} INFO - (spark.app.submitTime,1706888334569)
+[2024-02-02T16:38:54.621+0100] {spark_submit.py:571} INFO - (spark.jars,file:/home/ubuntu/Downloads/mnmcount/scala/target/scala-2.12/main-scala-mnmc_2.12-1.0.jar)
+[2024-02-02T16:38:54.622+0100] {spark_submit.py:571} INFO - (spark.master,local[*])
+[2024-02-02T16:38:54.622+0100] {spark_submit.py:571} INFO - (spark.submit.deployMode,client)
+[2024-02-02T16:38:54.622+0100] {spark_submit.py:571} INFO - (spark.submit.pyFiles,)
+[2024-02-02T16:38:54.623+0100] {spark_submit.py:571} INFO - Classpath elements:
+[2024-02-02T16:38:54.623+0100] {spark_submit.py:571} INFO - file:/home/ubuntu/Downloads/mnmcount/scala/target/scala-2.12/main-scala-mnmc_2.12-1.0.jar
+[2024-02-02T16:38:54.623+0100] {spark_submit.py:571} INFO - 
+[2024-02-02T16:38:54.623+0100] {spark_submit.py:571} INFO - 
+[2024-02-02T16:38:54.628+0100] {spark_submit.py:571} INFO - Error: Failed to load class main.scala.chapter2.MovieAnalysis.
+[2024-02-02T16:38:54.708+0100] {spark_submit.py:571} INFO - 24/02/02 16:38:54 INFO ShutdownHookManager: Shutdown hook called
+[2024-02-02T16:38:54.714+0100] {spark_submit.py:571} INFO - 24/02/02 16:38:54 INFO ShutdownHookManager: Deleting directory /tmp/spark-ff54eaaa-d2f6-4ae7-af0b-1f863b4f75f6
+[2024-02-02T16:38:54.853+0100] {taskinstance.py:2699} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/airflow/providers/apache/spark/operators/spark_submit.py", line 174, in execute
+    self._hook.submit(self._application)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/airflow/providers/apache/spark/hooks/spark_submit.py", line 502, in submit
+    raise AirflowException(
+airflow.exceptions.AirflowException: Cannot execute: spark-submit --master local[*] --num-executors 2 --total-executor-cores 2 --executor-cores 1 --executor-memory 2g --name arrow-spark --class main.scala.chapter2.MovieAnalysis --verbose --queue root.default /home/ubuntu/Downloads/mnmcount/scala/target/scala-2.12/main-scala-mnmc_2.12-1.0.jar. Error code is: 101.
+[2024-02-02T16:38:54.865+0100] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=MyDag, task_id=spark_job, execution_date=20240104T000000, start_date=20240202T153848, end_date=20240202T153854
+[2024-02-02T16:38:54.908+0100] {standard_task_runner.py:107} ERROR - Failed to execute job 45 for task spark_job (Cannot execute: spark-submit --master local[*] --num-executors 2 --total-executor-cores 2 --executor-cores 1 --executor-memory 2g --name arrow-spark --class main.scala.chapter2.MovieAnalysis --verbose --queue root.default /home/ubuntu/Downloads/mnmcount/scala/target/scala-2.12/main-scala-mnmc_2.12-1.0.jar. Error code is: 101.; 12181)
+[2024-02-02T16:38:54.934+0100] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-02-02T16:38:54.954+0100] {taskinstance.py:3281} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,99 @@
+[2024-02-02T16:43:28.633+0100] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: MyDag.ingest_data_task scheduled__2024-01-05T00:00:00+00:00 [queued]>
+[2024-02-02T16:43:28.640+0100] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: MyDag.ingest_data_task scheduled__2024-01-05T00:00:00+00:00 [queued]>
+[2024-02-02T16:43:28.640+0100] {taskinstance.py:2171} INFO - Starting attempt 1 of 2
+[2024-02-02T16:43:28.668+0100] {taskinstance.py:2192} INFO - Executing <Task(PythonOperator): ingest_data_task> on 2024-01-05 00:00:00+00:00
+[2024-02-02T16:43:28.680+0100] {standard_task_runner.py:60} INFO - Started process 12382 to run task
+[2024-02-02T16:43:28.686+0100] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'MyDag', 'ingest_data_task', 'scheduled__2024-01-05T00:00:00+00:00', '--job-id', '50', '--raw', '--subdir', 'DAGS_FOLDER/FilmDag.py', '--cfg-path', '/tmp/tmp3vwzp_i4']
+[2024-02-02T16:43:28.690+0100] {standard_task_runner.py:88} INFO - Job 50: Subtask ingest_data_task
+[2024-02-02T16:43:28.762+0100] {task_command.py:423} INFO - Running <TaskInstance: MyDag.ingest_data_task scheduled__2024-01-05T00:00:00+00:00 [running]> on host ubuntu.ubuntu.virtualbox.org
+[2024-02-02T16:43:28.851+0100] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='MyDag' AIRFLOW_CTX_TASK_ID='ingest_data_task' AIRFLOW_CTX_EXECUTION_DATE='2024-01-05T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-05T00:00:00+00:00'
+[2024-02-02T16:44:34.801+0100] {taskinstance.py:2699} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/ssl.py", line 1050, in _create
+    self.getpeername()
+OSError: [Errno 107] Transport endpoint is not connected
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 715, in urlopen
+    httplib_response = self._make_request(
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 404, in _make_request
+    self._validate_conn(conn)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 1058, in _validate_conn
+    conn.connect()
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/urllib3/connection.py", line 419, in connect
+    self.sock = ssl_wrap_socket(
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/urllib3/util/ssl_.py", line 449, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/urllib3/util/ssl_.py", line 493, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+  File "/usr/lib/python3.10/ssl.py", line 513, in wrap_socket
+    return self.sslsocket_class._create(
+  File "/usr/lib/python3.10/ssl.py", line 1062, in _create
+    notconn_pre_handshake_data = self.recv(1)
+  File "/usr/lib/python3.10/ssl.py", line 1290, in recv
+    return super().recv(buflen, flags)
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 799, in urlopen
+    retries = retries.increment(
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/urllib3/util/retry.py", line 550, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/urllib3/packages/six.py", line 769, in reraise
+    raise value.with_traceback(tb)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 715, in urlopen
+    httplib_response = self._make_request(
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 404, in _make_request
+    self._validate_conn(conn)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 1058, in _validate_conn
+    conn.connect()
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/urllib3/connection.py", line 419, in connect
+    self.sock = ssl_wrap_socket(
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/urllib3/util/ssl_.py", line 449, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/urllib3/util/ssl_.py", line 493, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+  File "/usr/lib/python3.10/ssl.py", line 513, in wrap_socket
+    return self.sslsocket_class._create(
+  File "/usr/lib/python3.10/ssl.py", line 1062, in _create
+    notconn_pre_handshake_data = self.recv(1)
+  File "/usr/lib/python3.10/ssl.py", line 1290, in recv
+    return super().recv(buflen, flags)
+urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/home/ubuntu/airflow/dags/program.py", line 76, in ingest_data
+    movies_data()
+  File "/home/ubuntu/airflow/dags/program.py", line 52, in movies_data
+    all_popular_movies_data = get_all_pages(popular_movies_url)
+  File "/home/ubuntu/airflow/dags/program.py", line 27, in get_all_pages
+    response = requests.get(api_url, params=params)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/requests/adapters.py", line 501, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+[2024-02-02T16:44:35.307+0100] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=MyDag, task_id=ingest_data_task, execution_date=20240105T000000, start_date=20240202T154328, end_date=20240202T154435
+[2024-02-02T16:44:35.588+0100] {standard_task_runner.py:107} ERROR - Failed to execute job 50 for task ingest_data_task (('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer')); 12382)
+[2024-02-02T16:44:35.688+0100] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-02-02T16:44:35.738+0100] {taskinstance.py:3281} INFO - 0 downstream tasks scheduled from follow-on schedule check
